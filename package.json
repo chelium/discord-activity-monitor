@@ -7,7 +7,7 @@
     "@hapi/joi": "^15.1.0",
     "@types/hapi__joi": "^15.0.3",
     "@types/node": "^11.13.0",
-    "disharmony": "git+https://github.com/bhigginsuk/disharmony.git#v2.0.8",
+    "disharmony": "^2.0.8",
     "forever-monitor": "^3.0.3",
     "typescript": "^3.9.7"
   },
