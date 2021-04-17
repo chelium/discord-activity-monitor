@@ -1,7 +1,7 @@
 {
   "author": "Benjamin Higgins <mail@brhiggins.com>",
   "bugs": {
-    "url": "https://github.com/bhigginsuk/discord-activity-monitor/issues"
+    "url": "https://github.com/chelium/discord-activity-monitor/issues"
   },
   "dependencies": {
     "@hapi/joi": "^15.1.0",
@@ -28,7 +28,7 @@
   "name": "discord-activity-monitor",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bhigginsuk/discord-activity-monitor.git"
+    "url": "git+https://github.com/chelium/discord-activity-monitor.git"
   },
   "scripts": {
     "build": "./node_modules/.bin/tsc --project tsconfig.prod.json",
