@@ -1,5 +1,5 @@
+import { DisharmonyGuild, DisharmonyGuildMember } from "@chelium/disharmony"
 import { Role } from "discord.js"
-import { DisharmonyGuild, DisharmonyGuildMember } from "disharmony"
 
 export default class Guild extends DisharmonyGuild
 {
@@ -11,8 +11,8 @@ export default class Guild extends DisharmonyGuild
     public get activeRoleId(): string { return this.record.activeRoleId || "" }
     public set activeRoleId(value: string) { this.record.activeRoleId = value }
 
-    public get activeRole() { return this.djs.roles.get(this.activeRoleId) }
-    public get inactiveRole() { return this.djs.roles.get(this.inactiveRoleId) }
+    public get activeRole() { return this.djs.roles.cache.get(this.activeRoleId) }
+    public get inactiveRole() { return this.djs.roles.cache.get(this.inactiveRoleId) }
 
     public get inactiveRoleId(): string { return this.record.inactiveRoleId || "" }
     public set inactiveRoleId(value: string) { this.record.inactiveRoleId = value }
@@ -43,15 +43,15 @@ export default class Guild extends DisharmonyGuild
     public isMemberIgnored(member: DisharmonyGuildMember): boolean
     {
         const isIgnoredIndividually = this.ignoredUserIds.indexOf(member.id) >= 0
-        const hasIgnoredRole = this.ignoredRoleIds.some(roleId => member.djs.roles.has(roleId))
+        const hasIgnoredRole = this.ignoredRoleIds.some(roleId => member.djs.roles.cache.has(roleId))
         return isIgnoredIndividually || hasIgnoredRole
     }
 
     public canBotManageRole(targetRole: Role): boolean
     {
-        return !!this.me.djs.roles.find(role =>
+        return !!this.me.djs.roles.cache.find(role =>
             role.position > targetRole.position // Bot has a role higher than the target role...
-            && role.hasPermission("MANAGE_ROLES")) // ...which has the permission to manage other roles
+            && role.permissions.has("MANAGE_ROLES")) // ...which has the permission to manage other roles
     }
 
     /** True if the supplied snowflake is configured */
@@ -61,7 +61,7 @@ export default class Guild extends DisharmonyGuild
             snowflake
             && snowflake !== "disabled"
             && snowflake.length > 0
-            && this.djs.roles.has(snowflake)
+            && this.djs.roles.cache.has(snowflake)
         )
     }
 
@@ -69,7 +69,7 @@ export default class Guild extends DisharmonyGuild
     public isRoleBadlyConfigured(snowflake: string)
     {
         return this.isRoleConfigured(snowflake) // Role is valid and exists
-            && !this.canBotManageRole(this.djs.roles.get(snowflake)!) // Role hierarchy is configured to allow the bot to manage this role
+            && !this.canBotManageRole(this.djs.roles.cache.get(snowflake)!) // Role hierarchy is configured to allow the bot to manage this role
     }
 
     /** True if the supplied snowflake is configured, and not configured badly */

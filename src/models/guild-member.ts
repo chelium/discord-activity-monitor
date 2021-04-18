@@ -1,6 +1,6 @@
-import { DisharmonyGuildMember } from "disharmony"
+import { DisharmonyGuildMember } from "@chelium/disharmony"
 
 export default class GuildMember extends DisharmonyGuildMember
 {
-    public get voiceChannelName(): string { return this.djs.voiceChannel && this.djs.voiceChannel.name || "" }
+    public get voiceChannelName(): string { return this.djs.voice.channel && this.djs.voice.channel.name || "" }
 }

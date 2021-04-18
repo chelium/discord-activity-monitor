@@ -1,5 +1,5 @@
 import { Message as DjsMessage, TextChannel } from "discord.js"
-import { DisharmonyMessage } from "disharmony"
+import { DisharmonyMessage } from "@chelium/disharmony"
 import Guild from "./guild"
 import GuildMember from "./guild-member"
 
@@ -13,6 +13,8 @@ export default class Message extends DisharmonyMessage
     constructor(djsMessage: DjsMessage)
     {
         super(djsMessage)
-        this.guild = new Guild(djsMessage.guild)
+        if (djsMessage.guild) {
+            this.guild = new Guild(djsMessage.guild)
+        }
     }
 }

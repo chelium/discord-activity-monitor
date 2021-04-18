@@ -1,4 +1,4 @@
-import { Client, Command, CommandRejection, Logger, PermissionLevel } from "disharmony"
+import { Client, Command, CommandRejection, Logger, PermissionLevel } from "@chelium/disharmony"
 import SetupHelper from "../core/setup-helper"
 import Message from "../models/message"
 

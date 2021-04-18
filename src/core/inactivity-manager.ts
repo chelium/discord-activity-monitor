@@ -1,4 +1,4 @@
-import { LiteClient, LiteDisharmonyClient, loadConfig, Logger } from "disharmony"
+import { LiteClient, LiteDisharmonyClient, loadConfig, Logger } from "@chelium/disharmony"
 import Guild from "../models/guild"
 import GuildMember from "../models/guild-member"
 
@@ -7,7 +7,7 @@ export default class InactivityManager
     public async manageInactiveUsersInAllGuilds()
     {
         await Logger.debugLog("Beginning guild iteration to manage inactive users")
-        for (const djsGuild of this.client.djs.guilds.values())
+        for (const djsGuild of this.client.djs.guilds.cache.values())
             await this.manageInactiveUsersInGuild(new Guild(djsGuild))
         await Logger.debugLog("Guilds iteration complete")
     }

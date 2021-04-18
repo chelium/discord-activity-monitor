@@ -1,4 +1,4 @@
-import { DisharmonyClient, Logger } from "disharmony"
+import { DisharmonyClient, Logger } from "@chelium/disharmony"
 import ActivityMonitorConfig from "../models/activity-monitor-config"
 import Guild from "../models/guild"
 import GuildMember from "../models/guild-member"
@@ -47,7 +47,7 @@ export default class ActivityRegisterer
         {
             const reasonStr = `Activity detected in channel '${channelName}'`
 
-            if (member.djs.roles.has(guild.activeRoleId))
+            if (member.djs.roles.cache.has(guild.activeRoleId))
                 return
 
             await member.addRole(guild.activeRoleId, reasonStr)

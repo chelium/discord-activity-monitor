@@ -4,11 +4,11 @@
     "url": "https://github.com/chelium/discord-activity-monitor/issues"
   },
   "dependencies": {
-    "@hapi/joi": "^15.1.0",
+    "@chelium/disharmony": "^2.1.0",
     "@types/hapi__joi": "^15.0.3",
     "@types/node": "^11.13.0",
-    "@chelium/disharmony": "^2.0.8",
     "forever-monitor": "^3.0.3",
+    "joi": "^17.4.0",
     "typescript": "^3.9.7"
   },
   "description": "Discord bot to add/remove roles based on user activity",
@@ -22,7 +22,7 @@
     "!*.map",
     "!*.spec.*"
   ],
-  "homepage": "https://github.com/bhigginsuk/discord-activity-monitor#readme",
+  "homepage": "https://github.com/chelium/discord-activity-monitor#readme",
   "license": "MIT",
   "main": "dist/index.js",
   "name": "discord-activity-monitor",

@@ -1,4 +1,4 @@
-import { Command, PermissionLevel } from "disharmony"
+import { Command, PermissionLevel } from "@chelium/disharmony"
 import Message from "../models/message"
 
 async function invoke(_: string[], message: Message)

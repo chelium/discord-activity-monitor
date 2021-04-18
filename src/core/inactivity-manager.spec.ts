@@ -1,6 +1,6 @@
 import { AsyncTest, Expect, Setup, TestFixture } from "alsatian"
 import { Role } from "discord.js"
-import { DisharmonyClient } from "disharmony"
+import { DisharmonyClient } from "@chelium/disharmony"
 import { IMock, It, Mock, Times } from "typemoq"
 import Guild from "../models/guild"
 import GuildMember from "../models/guild-member"

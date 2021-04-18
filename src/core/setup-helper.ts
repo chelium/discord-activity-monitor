@@ -1,4 +1,4 @@
-import { Client, DisharmonyMessage, Question } from "disharmony"
+import { Client, DisharmonyMessage, Question } from "@chelium/disharmony"
 import Guild from "../models/guild"
 import Message from "../models/message"
 
@@ -21,7 +21,7 @@ const steps = [
         {
             // Expect the message to be in the format @<snowflake>
             if (answer.mentions.roles.size > 0)
-                guild.activeRoleId = answer.mentions.roles.first().id
+                guild.activeRoleId = answer?.mentions?.roles?.first()?.id ?? ""
             else
                 return "You must @mention an existing role"
         },
@@ -43,7 +43,7 @@ const steps = [
         action: (answer: DisharmonyMessage, guild: Guild) =>
         {
             if (answer.mentions.roles.size > 0)
-                guild.inactiveRoleId = answer.mentions.roles.first().id
+                guild.inactiveRoleId = answer?.mentions?.roles?.first()?.id ?? ""
             else if (answer.content.toLowerCase() === "disable")
                 guild.inactiveRoleId = "disabled"
             else
@@ -56,9 +56,9 @@ const steps = [
         {
             guild.ignoredRoleIds = []
             guild.ignoredUserIds = []
-            if (answer.mentions.members.size > 0 || answer.mentions.roles.size > 0)
+            if ((answer?.mentions?.members?.size ?? 0) > 0 || answer.mentions.roles.size > 0)
             {
-                answer.mentions.members.forEach(member => guild.ignoredUserIds.push(member.id))
+                answer?.mentions?.members?.forEach(member => guild.ignoredUserIds.push(member.id))
                 answer.mentions.roles.forEach(role => guild.ignoredRoleIds.push(role.id))
             }
             else if (answer.content.toLowerCase() !== "none")

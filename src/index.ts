@@ -1,6 +1,6 @@
 import * as Joi from "@hapi/joi"
 import * as Cluster from "cluster"
-import { DisharmonyClient, forkWorkerClient, loadConfig, Logger } from "disharmony"
+import { DisharmonyClient, forkWorkerClient, loadConfig, Logger } from "@chelium/disharmony"
 import { resolve } from "path"
 import commands from "./commands"
 import ActivityRegisterer from "./core/activity-registerer"
