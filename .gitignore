@@ -3,6 +3,7 @@ token*
 dist/
 nedb-data
 config.json
+.idea
 
 # Created by https://www.gitignore.io/api/node
 
